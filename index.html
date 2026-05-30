@@ -1,154 +1,281 @@
-<!-- Déclaration du type de document : HTML5 -->
-<!DOCTYPE html>
-
-<!-- Élément racine de la page -->
-<html lang="fr">
-  <!-- En-tête de la page (métadonnées) -->
+<!doctype html>
+<html lang="el">
   <head>
-    <!-- Encodage des caractères -->
     <meta charset="UTF-8" />
-
-    <!-- Configuration responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ΕΙΣ ΜΝΗΜΗΝ... ΤΟΥ ΓΙΑΝΝΗ ΚΑΡΑΝΙΚΟΛΑ</title>
+    <style>
+      /* --- STYLE GÉNÉRAL --- */
+      :root {
+        --bg-color: #fcfcfc;
+        --text-color: #1a1a1a;
+        --text-muted: #555555;
+        --border-color: #dddddd;
+        --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
 
-    <!-- Description pour les moteurs de recherche -->
-    <meta name="description" content="Ma première page web en HTML" />
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: var(--font-family);
+        line-height: 1.6;
+      }
 
-    <!-- Titre affiché dans l'onglet du navigateur -->
-    <title>Les Avengers - Super-Héros</title>
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+      }
 
-    <!-- Lien vers la feuille de style CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+      /* --- NAVIGATION --- */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border-color);
+      }
 
-   
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #888;
+      }
+
+      .lang-switch {
+        font-weight: bold;
+        text-decoration: none;
+        color: var(--text-color);
+        border: 1px solid var(--text-color);
+        padding: 5px 10px;
+        font-size: 0.85rem;
+        transition: all 0.3s;
+      }
+
+      .lang-switch:hover {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+      }
+
+      /* --- SECTION TITRE (Inspiré de l'affiche) --- */
+      .hero {
+        text-align: center;
+        padding: 60px 0 40px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        letter-spacing: 2px;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin: 0 0 15px 0;
+        letter-spacing: 1px;
+      }
+
+      .hero .subtitle-fr {
+        font-style: italic;
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-color);
+        margin: 20px 0;
+      }
+
+      /* --- GRILLE DE PHOTOS --- */
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 50px;
+      }
+
+      /* Layout asymétrique pour rappeler l'affiche */
+      .photo-item {
+        background-color: #eee;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+        transition: filter 0.5s;
+      }
+
+      .photo-item img:hover {
+        filter: grayscale(
+          0%
+        ); /* Optionnel : laisse apparaître la couleur au survol si besoin */
+      }
+
+      .photo-large {
+        grid-row: span 2;
+        aspect-ratio: auto;
+        height: 100%;
+      }
+
+      /* --- EN-TÊTE EXPOSITION --- */
+      .expo-banner {
+        text-align: center;
+        background-color: #f0f0f0;
+        padding: 30px;
+        margin-top: 40px;
+        border: 1px solid var(--border-color);
+      }
+
+      .expo-banner h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+      }
+
+      .expo-banner p {
+        margin: 5px 0;
+        color: var(--text-muted);
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        text-align: center;
+        padding: 40px 0;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border-color);
+        margin-top: 60px;
+      }
+
+      /* --- RESPONSIVE (Téléphones) --- */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .photo-grid {
+          grid-template-columns: 1fr;
+        }
+        .photo-large {
+          grid-row: auto;
+        }
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+        .hero h2 {
+          font-size: 1.4rem;
+        }
+      }
+    </style>
   </head>
-
-  <!-- Corps de la page (contenu visible) -->
   <body>
-    <header>
-      <h1>AVENGERS</h1>
-      <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#heros">Héros</a>
-        <a href="#pouvoirs">Pouvoirs</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-    <main>
-      <section id="accueil"></section>
-      <h2>Bienvenue chez les Avengers</h2>
-      <p>
-        Les plus <strong>puissants héros de la Terre</strong> s'unissent pour
-        <u><i>protéger le monde</i></u>
-      </p>
-      <a href="img/equipe.png" target="_blank"> <img src="img/equipe.png" alt="Avengers" width="400" />
-        <p>Les Avengers sont une équipe de <u>texte souligné</u>per-héros qui luttent pour la justice.</p>
-        <a href="#heros">Voir les héros</a>
-        <section id="heros">
-            <h2>Nos Super-Héros</h2>
-            <article>
-                <img src="img/ironman.png" alt="Iron Man" width="150">
-                <div class="description">
-                <h3>Iron Man</h3>
-                <p><strong>Tony Stark, génie inventeur</strong></p>
-                <h4>Pouvoirs et capacités</h4>
-                <ul>
-                    <li>Armure</li>
-                    <li>Feu</li>
-                    <li>Etincelles</li>
-                    <li>Magnétisme</li>
-                </ul>
-                </div>
+    <div class="container">
+      <header>
+        <nav class="nav-links">
+          <a href="index.html" class="active">Αρχική</a>
+          <a href="bio.html">Βιογραφία</a>
+          <a href="galerie.html">Γκαλερί</a>
+          <a href="exposition.html">Έκθεση</a>
+          <a href="contact.html">Επικοινωνία</a>
+        </nav>
+        <a href="fr/index.html" class="lang-switch">FR</a>
+      </header>
 
-            </article>
-            <article>
-                <img src="img/captain.png" alt="Captain America" width="150">
-                <div class="description">
-                <h3>Captain America</h3>
-                <p><strong>Steve Rogers, premier Avengers</strong></p>
-                <h4>Pouvoirs et capacités</h4>
-                <ul>
-                    <li>Pierre</li>
-                    <li>Feuille</li>
-                    <li>Ciseaux</li>
-                    <li>Caillou</li>
-                </ul>
-                </div>
+      <section class="hero">
+        <h1>ΕΙΣ ΜΝΗΜΗΝ...</h1>
+        <h2>ΤΟΥ ΓΙΑΝΝΗ ΚΑΡΑΝΙΚΟΛΑ</h2>
+        <div class="subtitle-fr">A la mémoire de... Yannis Caranicolas</div>
 
-            </article>
-            <article>
-                <img src="img/thor.png" alt="Thor" width="150">
-                <div class="description">
-                <h3>Thor</h3>
-                <p><strong>Dieu du tonnerre</strong></p>
-                <h4>Pouvoirs et capacités</h4>
-                <ul>
-                    <li>Foudre</li>
-                    <li>Marteau</li>
-                    <li>Enclume</li>
-                    <li>Puissance</li>
-                </ul>
-                </div>
+        <div class="divider"></div>
 
-            </article>
+        <h2 style="font-size: 1.5rem; margin-top: 20px">ΦΩΤΟΓΡΑΦΙΚΗ ΕΚΘΕΣΗ</h2>
+        <div class="subtitle-fr" style="margin-bottom: 0">
+          Exposition photographique
+        </div>
+      </section>
 
+      <main class="photo-grid">
+        <div class="photo-item">
+          <img
+            src="images/photo1.jpg"
+            alt="Φωτογραφία Γιάννη Καρανικόλα - Φύση"
+          />
+        </div>
+        <div class="photo-item photo-large">
+          <img
+            src="images/photo2.jpg"
+            alt="Φωτογραφία Γιάννη Καρανικόλα - Υφή"
+          />
+        </div>
+        <div class="photo-item">
+          <img
+            src="images/photo3.jpg"
+            alt="Φωτογραφία Γιάννη Καρανικόλα - Τοπίο"
+          />
+        </div>
+        <div class="photo-item">
+          <img
+            src="images/photo4.jpg"
+            alt="Φωτογραφία Γιάννη Καρανικόλα - Βράχος"
+          />
+        </div>
+        <div class="photo-item">
+          <img
+            src="images/photo5.jpg"
+            alt="Φωτογραφία Γιάννη Καρανικόλα - Νερό"
+          />
+        </div>
+        <div class="photo-item">
+          <img
+            src="images/photo6.jpg"
+            alt="Φωτογραφία Γιάννη Καρανικόλα - Στιγμιότυπο"
+          />
+        </div>
+      </main>
 
-    </section>
-    <section id="pouvoirs">
-        <h2>Pouvoirs et statistiques</h2>
-        <p>Tous les pouvoirs réunis des Avengers dans ce tableau comparatif</p>
-        <table border="1">
-            <caption>Statistiques de combat des Avengers</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Héros</th>
-                    <th scope="col">Force</th>
-                    <th scope="col">Vitesse</th>
-                    <th scope="col">Intellignce</th>
-                </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Iron Man</td>
-                <td>85</td>
-                <td>90</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>Captain American</td>
-                <td>95</td>
-                <td>85</td>
-                <td>80</td>
-              </tr>
-              <tr>
-                <td>Thor</td>
-                <td>100</td>
-                <td>95</td>
-                <td>85</td>
-              </tr>
-            </tbody>
-        </table>
-    </section>
-</main>
-<footer id="contact">
-  <h2>Contact et Informations</h2>
-  <div class="footer-sections"></div>
-  <div>
-    <h3>Avengers Initiative</h3>
-    <p>Les plus puissants héros de l'univers...</p>
-  </div>
-  <div>
-    <h3>Navigation</h3>
-    <p>Liens rapides</p>
-  </div>
-  <div>
-    <h3>Contact</h3>
-    <p>Avengers Tower</p>
-    <p><a href="mailto:contact@avengers.com?subject=Je vous contacte de la page web">Cliquez ici pour nous envoyer un email</a></p>
-  </div>
-  <div class="copyright">
-    <p>© 2025 Avengers - Tous droits réservés - Assemblons-nous!</p>
-  </div>
-</footer>
+      <section class="expo-banner">
+        <h3>ΠΑΛΙΟ ΚΑΦΕΝΕΙΟ "ΚΟΠΡΙΤΕΛΛΗ" - ΜΑΝΤΑΜΑΔΟΣ</h3>
+        <p><strong>Σάββατο 1/8/2026 έως Κυριακή 16/8/2026</strong></p>
+        <p>Ωράριο: 11 π.μ. - 1 μ.μ. και 7 μ.μ. - 10 μ.μ.</p>
+        <p style="font-style: italic; margin-top: 15px; font-size: 0.9rem">
+          Ancienne agora - Mantamados - Lesvos - Grèce
+        </p>
+      </section>
+
+      <footer>
+        <p>
+          © 2026 Yannis Caranicolas Tribute. Πληροφορίες - Informations : +33 6
+          87 39 80 21 - yannis.caranicolas.fr
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
