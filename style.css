@@ -1,321 +1,286 @@
-/* --- VARIABLES & COULEURS (Style Affiche/Galerie) --- */
+/* --- VARIABLES ET COULEURS D'ARTISTE --- */
 :root {
-  --bg-color: #121212;
-  --text-color: #f5f5f5;
-  --accent-color: #d4af37; /* Or subtil */
-  --card-bg: #1e1e1e;
-  --font-title: "Playfair Display", Georgia, serif;
-  --font-body: "Montserrat", Helvetica, sans-serif;
+    --bg-color: #f7f5f0;       /* Fond crème/affiche argentique */
+    --text-color: #2c3e50;     /* Anthracite sombre esthétique */
+    --accent-color: #7f8c8d;   /* Gris de nuance pour les bordures */
+    --title-font: 'Times New Roman', Times, serif;
+    --body-font: Arial, sans-serif;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-body);
-  line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--body-font);
+    line-height: 1.6;
+    padding-top: 80px; /* Pour éviter que le menu fixe cache le contenu */
 }
 
-/* --- NAVIGATION --- */
+/* --- DESIGN DU MENU DE NAVIGATION --- */
 header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(18, 18, 18, 0.95);
-  z-index: 1000;
-  border-bottom: 1px solid #2a2a2a;
+    background-color: rgba(247, 245, 240, 0.95);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.logo {
-  font-family: var(--font-title);
-  font-size: 1.5rem;
-  color: var(--accent-color);
-  text-decoration: none;
+.logo h1 {
+    font-family: var(--title-font);
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 2px;
 }
 
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
 }
 
-nav a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  transition: color 0.3s;
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.3s;
 }
 
-nav a:hover,
-.lang-switch:hover {
-  color: var(--accent-color);
+.nav-links a:hover {
+    opacity: 0.6;
 }
 
 .lang-switch {
-  font-weight: bold;
-  color: var(--accent-color);
-  text-decoration: none;
-  border: 1px solid var(--accent-color);
-  padding: 5px 10px;
-  border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid var(--text-color);
+    padding: 3px 8px;
+    border-radius: 3px;
 }
 
-/* --- SECTIONS --- */
+/* --- STRUCTURE DES SECTIONS --- */
 section {
-  padding: 100px 20px 60px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 40px 20px;
 }
 
 h2 {
-  font-family: var(--font-title);
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 40px;
-  color: var(--accent-color);
+    font-family: var(--title-font);
+    font-size: 2.5rem;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
 }
 
-/* --- ACCUEIL --- */
-#accueil {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("images/photo1.jpg") center/cover no-repeat;
+/* --- SECTION ACCUEIL --- */
+#accueil, #home {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-#accueil h1 {
-  font-family: var(--font-title);
-  font-size: 3.5rem;
-  margin-bottom: 20px;
+.hero-title {
+    font-family: var(--title-font);
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
-#accueil p {
-  font-size: 1.5rem;
-  font-style: italic;
-  max-width: 800px;
+/* --- SECTION BIOGRAPHIE (Alternée) --- */
+.bio-block {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
 }
 
-/* --- BIOGRAPHIE (Alternée) --- */
-.bio-item {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-.bio-item:nth-child(even) {
-  flex-direction: row-reverse;
+.bio-block:nth-child(even) {
+    flex-direction: row-reverse;
 }
 
 .bio-text {
-  flex: 1;
+    flex: 1;
+    font-size: 1.05rem;
+    text-align: justify;
 }
 
 .bio-img {
-  flex: 1;
-  max-width: 450px;
-  height: auto;
-  border: 1px solid #333;
-  filter: grayscale(50%);
-  transition: filter 0.5s;
+    flex: 1;
+    max-width: 450px;
 }
 
-.bio-img:hover {
-  filter: grayscale(0%);
+.bio-img img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(20%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* --- GALERIE (Masonry / Mosaïque) --- */
-.gallery-grid {
-  columns: 3 300px;
-  column-gap: 15px;
+/* --- GALERIE STYLE MASONRY (MOSAÏQUE) --- */
+.gallery-masonry {
+    columns: 3 300px;
+    column-gap: 15px;
 }
 
 .gallery-item {
-  margin-bottom: 15px;
-  break-inside: avoid;
-  overflow: hidden;
-  cursor: pointer;
-  border: 1px solid #2a2a2a;
+    background-color: #fff;
+    margin-bottom: 15px;
+    break-inside: avoid;
+    inline-size: 100%;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-/* LIGHTBOX (Agrandissement photo) */
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 2000;
-  justify-content: center;
-  align-items: center;
+/* Effet Lightbox (Grand Format au clic) */
+.gallery-item:focus {
+    outline: none;
 }
-.lightbox:target {
-  display: flex;
-}
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: #fff;
-  font-size: 3rem;
-  text-decoration: none;
+/* Version simplifiée native CSS pour agrandissement sans JS lourd */
+.gallery-item img:active {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 2000;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
 }
 
-/* --- EXPOSITION --- */
+/* --- SECTION EXPOSITION & MAPS --- */
 .expo-container {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
-.expo-info {
-  flex: 1;
-  min-width: 300px;
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 8px;
-  border-left: 4px solid var(--accent-color);
+.expo-details {
+    flex: 1;
+    min-width: 300px;
 }
 
-.expo-info p {
-  margin-bottom: 15px;
-}
-.expo-info strong {
-  color: var(--accent-color);
+.expo-details p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
 }
 
-.expo-map {
-  flex: 1;
-  min-width: 300px;
-  height: 450px;
+.expo-details strong {
+    font-family: var(--title-font);
+    font-size: 1.2rem;
 }
 
-.expo-map iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: 8px;
+.map-container {
+    flex: 1;
+    min-width: 300px;
+    height: 450px;
 }
 
-/* --- FORMULAIRES (Livre d'or & Contact) --- */
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- FORMULAIRES (Livre d'or et Contact) --- */
 form {
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 8px;
-  max-width: 700px;
-  margin: 0 auto 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--accent-color);
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 12px;
-  background: #2b2b2b;
-  border: 1px solid #444;
-  color: #fff;
-  border-radius: 4px;
-  font-family: var(--font-body);
+input, textarea {
+    font-family: var(--body-font);
+    background-color: transparent;
+    border: 1px solid var(--text-color);
+    padding: 12px;
+    color: var(--text-color);
+    font-size: 1rem;
 }
 
 textarea {
-  resize: vertical;
+    resize: vertical;
+    min-height: 150px;
 }
 
 button {
-  background: var(--accent-color);
-  color: #000;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-  text-transform: uppercase;
+    font-family: var(--title-font);
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: opacity 0.3s;
 }
 
 button:hover {
-  background: #b8952e;
+    opacity: 0.9;
 }
 
+/* Iframe Livre d'or */
 .guestbook-iframe {
-  width: 100%;
-  height: 500px;
-  border: 1px solid #333;
-  background: #fff;
-  border-radius: 8px;
+    width: 100%;
+    height: 600px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
 }
 
-/* --- RESPONSIVE --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 15px;
-  }
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .bio-item,
-  .bio-item:nth-child(even) {
-    flex-direction: column;
-  }
-  #accueil h1 {
-    font-size: 2.2rem;
-  }
-  #accueil p {
-    font-size: 1.1rem;
-  }
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .bio-block, .bio-block:nth-child(even) {
+        flex-direction: column;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
 }
