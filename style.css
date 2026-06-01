@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
-    --bg-color: #f9f8f6;       /* Fond crème de l'affiche */
-    --text-color: #2a2a2a;     /* Sombre mais pas noir pur */
-    --accent-color: #707070;   /* Gris intermédiaire pour les sous-titres */
+    color-scheme: light; /* Force le navigateur à ignorer ses règles de mode sombre automatique */
+    --bg-color: #f9f8f6;       
+    --text-color: #2a2a2a;     
+    --accent-color: #707070;   
     --font-title: 'Playfair Display', Georgia, serif;
     --font-body: Arial, Helvetica, sans-serif;
 }
@@ -16,11 +17,11 @@
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
     font-family: var(--font-body);
     line-height: 1.6;
-    padding-top: 80px; /* Espace pour le menu fixe */
+    padding-top: 80px;
 }
 
 /* --- NAVIGATION --- */
@@ -29,7 +30,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(249, 248, 246, 0.95);
+    background-color: #f9f8f6 !important; /* On retire la transparence pour bloquer l'inversion */
     border-bottom: 1px solid rgba(0,0,0,0.05);
     z-index: 1000;
 }
@@ -58,7 +59,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--text-color) !important;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -77,6 +78,7 @@ nav a:hover {
 
 /* --- STRUCTURE SECTIONS --- */
 section {
+    background-color: var(--bg-color) !important;
     max-width: 1100px;
     margin: 0 auto;
     padding: 80px 20px;
